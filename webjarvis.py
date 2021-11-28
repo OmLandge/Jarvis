@@ -73,8 +73,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('omlandge0000@gmail.com', 'om@@11om')
-    server.sendmail('landgepradnya1@gmail.com', to, content)
+    server.login('Your Email', 'Password')
+    server.sendmail('Receiver Email', to, content)
     server.close()
 
 def make_request(url):
@@ -127,7 +127,7 @@ if __name__ == "__main__":
             webbrowser.open("youtube.com")
         
         elif 'open gmail' in query:
-            webbrowser.open("https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox")
+            webbrowser.open("https://mail.google.com/")
 
         elif 'open my website' in query:
             webbrowser.open("http://choiceenterprises.atwebpages.com/")
@@ -158,11 +158,11 @@ if __name__ == "__main__":
             wm = takeCommand().lower()
             minutes = int(datetime.datetime.now().minute)
             hours = int(datetime.datetime.now().hour)
-            kit.sendwhatmsg("+918177875051",f"{wm}" ,hours, minutes+1 )
+            kit.sendwhatmsg("Your Phone no. with country code",f"{wm}" ,hours, minutes+1 )
 
 
         elif 'play music' in query:
-           music_dir = 'D:\\vids\\music'
+           music_dir = 'Your music folder path'
            songs = os.listdir(music_dir)
            print(songs)    
            os.startfile(os.path.join(music_dir, songs[0]))
@@ -170,29 +170,11 @@ if __name__ == "__main__":
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")    
             speak(f"Sir, the time is {strTime}")
-
-        elif 'my name' in query:   
-            # speak("Om Bajirao")
-            playsound('mp3/name.mp3')
-        
-        elif 'my mother name' in query:   
-            # speak("Ujwala Bajirao")
-            playsound('mp3/mummyname.mp3')
-        
-        elif 'my sister name' in query:   
-            speak("Pradnya Bajirao")
-            # playsound('mp3/pname.mp3')
-        
-        elif 'my father name' in query:   
-            # speak("Bajirao Balasaheb")
-            playsound('mp3/pappaname.mp3')
-        
-        elif 'my father work' in query:   
-            speak("Business Man")
-
+            
         elif 'screenshot' in query:
             image = pyautogui.screenshot()
-            image.save('img/screenshot.png')
+            strTime1 = datetime.datetime.now().strftime("%H:%M:%S")
+            image.save("img/screenshot"+ strTime1 +".png")
             speak('Screenshot taken.') 
 
         elif 'joke' in query:
@@ -224,15 +206,11 @@ if __name__ == "__main__":
 
         elif 'open map' in query: 
             speak("Sir, which location should I search...")
-            gm = takeCommand().lower()
-            if 'my home' in gm:
-               webbrowser.open("https://earth.google.com/web/data=Mj8KPQo7CiExa0FZME1DSHB6bGFERmJXWUNkb0hmb1V3TF9yV011YmESFgoUMEIxQUFGODczMDFFMDFEN0RBMTc")
-            else :    
-               url = "https://earth.google.com/web/search/"
-               web = (url + f"{gm}")
-               webbrowser.open(f"{web}")
+            gm = takeCommand().lower()  
+            url = "https://earth.google.com/web/search/"
+            web = (url + f"{gm}")
+            webbrowser.open(f"{web}")
             
-        
         elif 'mobile location' in query:   
             pepnumber = phonenumbers.parse(number, "CH")
             location = geocoder.description_for_number(pepnumber, "en")
@@ -242,7 +220,7 @@ if __name__ == "__main__":
             print(carrier.name_for_number(results, "en"))
 
             from opencage.geocoder import OpenCageGeocode
-            key = '94b473f7379143888da6ff8212aea56f'
+            key = 'Your API key'
             geocoder = OpenCageGeocode(key)
             query2 = str(location)
             result = geocoder.geocode(query2)
@@ -256,46 +234,19 @@ if __name__ == "__main__":
             strTime2 = datetime.datetime.now().strftime("%H_%M_%S")
 
             myMap.save("Location/"+ strTime2 +".html")
-            mapOpen = "D:\\Python\\jarvis\\Location\\"+ strTime2 +".html"
+            mapOpen = "Your Folder Path"+ strTime2 +".html"
             webbrowser.open(mapOpen)
-
-
-       # elif 'open code' in query:
-           # codePath = "C:\\Users\\Haris\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
-          #  os.startfile(codePath)
-
-        elif 'email to pradnya' in query:
+            
+        elif 'email to my buddy' in query:
             try:
                 speak("What should I say?")
                 content = takeCommand()
-                to = "landgepradnya1@gmail.com"    
+                to = "Receiver Email"    
                 sendEmail(to, content)
                 speak("Email has been sent!")
             except Exception as e:
                 print(e)
-                speak("Sorry my friend Om Sir. I am not able to send this email")   
-
-        elif 'email to choice' in query:
-            try:
-                speak("What should I say?")
-                content = takeCommand()
-                to = "choice.information@gmail.com"    
-                sendEmail(to, content)
-                speak("Email has been sent!")
-            except Exception as e:
-                print(e)
-                speak("Sorry my friend Om Sir. I am not able to send this email")   
-
-        elif 'email to om' in query:
-            try:
-                speak("What should I say?")
-                content = takeCommand()
-                to = "omlandge0000@gmail.com"    
-                sendEmail(to, content)
-                speak("Email has been sent!")
-            except Exception as e:
-                print(e)
-                speak("Sorry my friend Om Sir. I am not able to send this email")   
+                speak("Sorry Sir. I am not able to send this email")      
 
         elif 'shutdown' in query:   
             speak("Thank Sir, have a good day...!")
