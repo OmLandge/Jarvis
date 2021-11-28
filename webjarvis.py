@@ -103,16 +103,6 @@ if __name__ == "__main__":
             if 'fine' in hw or 'good' in hw or 'nice' in hw or 'awesome' in hw:
                speak("It's good to know that your " + f"{hw}")
  
-        
-        # elif "change my name to" in query:
-        #     query = query.replace("change my name to", "")
-           
- 
-        # elif "change name" in query:
-        #     speak("What would you like to call me, Sir ")
-        #     assname = takeCommand()
-        #     speak("Thanks for naming me")
- 
         elif "what's your name" in query or "What is your name" in query:
             assname = "assistant"
             speak("My friends call me")
@@ -149,10 +139,7 @@ if __name__ == "__main__":
             yp = takeCommand().lower()
             kit.playonyt(f"{yp}")
             print("Playing...")
-
-        # elif 'open payment slip' in query:
-        #     webbrowser.open("http://choiceenterprises.atwebpages.com/admin/york_sep21/")   
-        
+            
         elif 'send message' in query:
             speak("Sir, what should you want to message...")
             wm = takeCommand().lower()
